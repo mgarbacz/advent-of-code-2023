@@ -1,0 +1,16 @@
+{
+  "name": "advent-of-code-2023",
+  "version": "1.0.0",
+  "description": "Solutions for Advent of Code 2023",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgarbacz/advent-of-code-2023.git"
+  },
+  "author": "Michal Garbacz <michal@garbacz.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgarbacz/advent-of-code-2023/issues"
+  },
+  "homepage": "https://github.com/mgarbacz/advent-of-code-2023#readme"
+}
