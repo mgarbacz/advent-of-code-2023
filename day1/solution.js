@@ -2,7 +2,7 @@ import * as readline from 'node:readline';
 import * as fs from 'node:fs';
 
 const fileStream = fs.createReadStream(new URL('./input.txt', import.meta.url));
-let linecount = 0;
+let calibrationValueSum = 0;
 
 const rl = readline.createInterface({
   input: fileStream,
@@ -10,10 +10,17 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', (line) => {
-  linecount++;
+  const digits = line.match(/\d/g);
+
+  if (digits && digits.length > 0) {
+    const firstDigit = digits[0];
+    const lastDigit = digits[digits.length - 1];
+    
+    calibrationValueSum += parseInt(firstDigit + lastDigit);
+  }
   console.log(line);
 });
 
 rl.on('close', () => {
-  console.log(linecount);
+  console.log(calibrationValueSum);
 });
