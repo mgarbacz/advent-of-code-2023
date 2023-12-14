@@ -1,7 +1,7 @@
 import * as readline from 'node:readline';
 import * as fs from 'node:fs';
 
-const fileStream = fs.createReadStream('day1/input.txt');
+const fileStream = fs.createReadStream(new URL('./input.txt', import.meta.url));
 let linecount = 0;
 
 const rl = readline.createInterface({
