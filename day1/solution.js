@@ -18,7 +18,6 @@ rl.on('line', (line) => {
     
     calibrationValueSum += parseInt(firstDigit + lastDigit);
   }
-  console.log(line);
 });
 
 rl.on('close', () => {
