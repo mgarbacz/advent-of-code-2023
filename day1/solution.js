@@ -1,5 +1,5 @@
-import * as readline from 'node:readline';
-import * as fs from 'node:fs';
+import readline from 'node:readline';
+import fs from 'node:fs';
 
 const fileStream = fs.createReadStream(new URL('./input.txt', import.meta.url));
 let calibrationValueSum = 0;
