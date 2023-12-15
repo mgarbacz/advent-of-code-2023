@@ -26,7 +26,7 @@ const day1 = async function() {
   });
 };
 
-const regex = /\d|(?:one|two|three|four|five|six|seven|eight|nine)/gi;
+const regex = /\d|one|two|three|four|five|six|seven|eight|nine/gi;
 const digitWords = {
   one: '1',
   two: '2',
