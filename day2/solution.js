@@ -5,6 +5,7 @@ const day2 = async function() {
   const filePath = new URL('./input.txt', import.meta.url);
   const fileStream = fs.createReadStream(filePath);
   let validGameIdSum = 0;
+  let setPowerSum = 0;
 
   const rl = readline.createInterface({
     input: fileStream,
@@ -13,11 +14,12 @@ const day2 = async function() {
 
   rl.on('line', (line) => {
     validGameIdSum += parseForValidGame(line);
+    setPowerSum += parseGamePower(line);
   });
 
   return new Promise((resolve, reject) => {
     rl.on('close', () => {
-      resolve(validGameIdSum);
+      resolve([validGameIdSum, setPowerSum]);
     });
 
     rl.on('error', (error) => {
@@ -60,6 +62,27 @@ export const parseForValidGame = function(line) {
   } else {
     return 0;
   }
+};
+
+export const parseGamePower = function(line) {
+  const colorRegex = /(\d+) (red|green|blue)/g;
+  const mins = {
+    red: 0,
+    green: 0,
+    blue: 0,
+  };
+
+  let match;
+  while ((match = colorRegex.exec(line)) !== null) {
+    const count = parseInt(match[1], 10);
+    const color = match[2];
+
+    if (count > mins[color]) {
+      mins[color] = count;
+    }
+  }
+
+  return mins["red"] * mins["green"] * mins["blue"];
 };
 
 export default day2;
