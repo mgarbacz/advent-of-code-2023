@@ -12,14 +12,7 @@ const day1 = async function() {
   });
 
   rl.on('line', (line) => {
-    const digits = line.match(/\d/g);
-
-    if (digits && digits.length > 0) {
-      const firstDigit = digits[0];
-      const lastDigit = digits[digits.length - 1];
-      
-      calibrationValueSum += parseInt(firstDigit + lastDigit);
-    }
+    calibrationValueSum += parseCalibrationValue(line);
   });
 
   return new Promise((resolve, reject) => {
@@ -31,5 +24,36 @@ const day1 = async function() {
       reject(error);
     });
   });
-}
+};
+
+const regex = /\d|(?:one|two|three|four|five|six|seven|eight|nine)/gi;
+const digitWords = {
+  one: '1',
+  two: '2',
+  three: '3',
+  four: '4',
+  five: '5',
+  six: '6',
+  seven: '7',
+  eight: '8',
+  nine: '9'
+};
+
+const parseDigit = function(digit) {
+  return digitWords[digit.toLowerCase()] || digit;
+};
+
+export const parseCalibrationValue = function(line) {
+  const digits = line.match(regex);
+
+  if (digits && digits.length > 0) {
+    const firstDigit = parseDigit(digits[0]);
+    const lastDigit = parseDigit(digits[digits.length - 1]);
+
+    return parseInt(firstDigit + lastDigit);
+  } else {
+    return 0;
+  }
+};
+
 export default day1;
