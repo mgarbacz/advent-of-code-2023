@@ -45,7 +45,7 @@ const parseDigit = function(digit) {
 
 export const parseCalibrationValue = function(line) {
   const digits = [];
-  
+
   let match;
   while (match = regex.exec(line)) {
     digits.push(match[0]);
@@ -56,7 +56,7 @@ export const parseCalibrationValue = function(line) {
     const firstDigit = parseDigit(digits[0]);
     const lastDigit = parseDigit(digits[digits.length - 1]);
 
-    return parseInt(firstDigit + lastDigit);
+    return parseInt(firstDigit + lastDigit, 10);
   } else {
     return 0;
   }
