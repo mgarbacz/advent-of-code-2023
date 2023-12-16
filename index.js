@@ -1,5 +1,6 @@
 import day1 from './day1/solution.js';
 import day2 from './day2/solution.js';
+import day3 from './day3/solution.js';
 
 day1()
   .then(solution => {
@@ -17,4 +18,12 @@ day2()
   })
   .catch(error => {
     console.log('Day 2 Solution encountered an error', error);
+  });
+
+day3()
+  .then(solution => {
+    console.log(`Day 3 Solution: ${solution}`);
+  })
+  .catch(error => {
+    console.log('Day 3 Solution encountered an error', error);
   });
