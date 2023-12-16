@@ -23,6 +23,8 @@ const day3 = async function() {
 
   return new Promise((resolve, reject) => {
     rl.on('close', () => {
+      // need to parse that last line still
+      enginePartSum += parsePartNumbers('', prevLine, prevPrevLine);
       resolve(enginePartSum);
     });
 
