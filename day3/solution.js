@@ -39,7 +39,7 @@ const day3 = async function() {
 
 const containsSymbols = function(str) {
   const symbolRegex = /[#$%&*+\-/=@]/;
-  return symbolRegex.exec(str) !== null ? true : false;
+  return symbolRegex.exec(str) !== null;
 };
 
 export const parsePartNumbers = function(nextLine, line, prevLine) {
