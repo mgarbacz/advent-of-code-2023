@@ -21,8 +21,10 @@ day2()
   });
 
 day3()
-  .then(solution => {
-    console.log(`Day 3 Solution: ${solution}`);
+  .then(solutions => {
+    const [part1, part2] = solutions;
+    console.log(`Day 3, Part 1 Solution: ${part1}`);
+    console.log(`Day 3, Part 2 Solution: ${part2}`);
   })
   .catch(error => {
     console.log('Day 3 Solution encountered an error', error);

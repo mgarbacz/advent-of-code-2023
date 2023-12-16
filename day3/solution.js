@@ -5,6 +5,7 @@ const day3 = async function() {
   const filePath = new URL('./input.txt', import.meta.url);
   const fileStream = fs.createReadStream(filePath);
   let enginePartSum = 0;
+  let gearRatioSum = 0;
   let prevLine = '';
   let prevPrevLine = '';
 
@@ -17,6 +18,7 @@ const day3 = async function() {
     // Since we are reading line by line, we need to keep track of the two
     // previous lines to compare all around the digits for symbols
     enginePartSum += parsePartNumbers(line, prevLine, prevPrevLine);
+    gearRatioSum += parseGearRatio(line, prevLine, prevPrevLine);
     prevPrevLine = prevLine;
     prevLine = line;
   });
@@ -25,7 +27,8 @@ const day3 = async function() {
     rl.on('close', () => {
       // need to parse that last line still
       enginePartSum += parsePartNumbers('', prevLine, prevPrevLine);
-      resolve(enginePartSum);
+      gearRatioSum += parseGearRatio('', prevLine, prevPrevLine);
+      resolve([enginePartSum, gearRatioSum]);
     });
 
     rl.on('error', (error) => {
@@ -37,7 +40,7 @@ const day3 = async function() {
 const containsSymbols = function(str) {
   const symbolRegex = /[#$%&*+\-/=@]/;
   return symbolRegex.exec(str) !== null ? true : false;
-}
+};
 
 export const parsePartNumbers = function(nextLine, line, prevLine) {
   const digitRegex = /\d+/g;
@@ -62,6 +65,15 @@ export const parsePartNumbers = function(nextLine, line, prevLine) {
   }
 
   return lineTotal;
+};
+
+const containsDigits = function(str) {
+  const digitRegex = /\d+/;
+  return digitRegex.exec(str) !== null;
+};
+
+export const parseGearRatio = function(line) {
+  return 0;
 };
 
 export default day3;
