@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 const day3 = async function() {
   const filePath = new URL('./input.txt', import.meta.url);
-  const fileStream = fs.createReadStream(filepath);
+  const fileStream = fs.createReadStream(filePath);
   let enginePartSum = 0;
 
   const rl = readline.createInterface({
