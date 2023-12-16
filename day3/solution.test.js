@@ -14,7 +14,7 @@ const schematic = [
 ];
 
 test('parses example engine schematic', () => {
-  expect(parsePartNumbers(schematic[1], schematic[0], '')).toBe(467);
+  expect(parsePartNumbers(schematic[1], schematic[0], ''          )).toBe(467);
   expect(parsePartNumbers(schematic[2], schematic[1], schematic[0])).toBe(0);
   expect(parsePartNumbers(schematic[3], schematic[2], schematic[1])).toBe(668);
   expect(parsePartNumbers(schematic[4], schematic[3], schematic[2])).toBe(0);
